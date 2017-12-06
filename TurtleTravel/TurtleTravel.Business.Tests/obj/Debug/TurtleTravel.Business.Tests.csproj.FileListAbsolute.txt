@@ -1,0 +1,14 @@
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\TurtleTravel.Business.Tests.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\TurtleTravel.Business.Tests.pdb
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\obj\Debug\TurtleTravel.Business.Tests.csprojResolveAssemblyReference.cache
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\obj\Debug\TurtleTravel.Business.Tests.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\obj\Debug\TurtleTravel.Business.Tests.pdb
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\TurtleTravel.Business.dll
+Z:\Arun\Sample\TurtleTravel\TurtleTravel.Business.Tests\bin\Debug\TurtleTravel.Business.pdb
