@@ -11,7 +11,7 @@ namespace TurtleTravel.Business.Tests
         {
             Turtle SteadyTurtle = new Turtle();
 
-            TablePosition expected = GetTablePosition(0, 0, Directions.North);
+            TablePosition expected = GetExpectedTablePosition(0, 0, Directions.North);
 
             TablePosition actual = SteadyTurtle.Report();
 
@@ -23,7 +23,7 @@ namespace TurtleTravel.Business.Tests
         {
             Turtle SteadyTurtle = new Turtle();
 
-            TablePosition expected = GetTablePosition(0, 0, Directions.North);
+            TablePosition expected = GetExpectedTablePosition(0, 0, Directions.North);
 
             TablePosition actual = SteadyTurtle.Report();
 
@@ -39,7 +39,7 @@ namespace TurtleTravel.Business.Tests
         public void Test_Check_Move_Forwards_1_Unit_Without_Changing_Direction()
         {
             Turtle SteadyTurtle = new Turtle();
-            TablePosition expected = GetTablePosition(0, 1, Directions.North);
+            TablePosition expected = GetExpectedTablePosition(0, 1, Directions.North);
 
             SteadyTurtle.Place(0, 0, "North");
             SteadyTurtle.Move();
@@ -53,7 +53,7 @@ namespace TurtleTravel.Business.Tests
         public void Test_Check_Left_Turns_90_Degree_Left_Without_Changing_Position()
         {
             Turtle SteadyTurtle = new Turtle();
-            TablePosition expected = GetTablePosition(0, 0, Directions.West);
+            TablePosition expected = GetExpectedTablePosition(0, 0, Directions.West);
 
             SteadyTurtle.Place(0, 0, "North");
             SteadyTurtle.Left();
@@ -67,7 +67,7 @@ namespace TurtleTravel.Business.Tests
         public void Test_Check_Right_Turns_90_Degree_Right_Without_Changing_Position()
         {
             Turtle SteadyTurtle = new Turtle();
-            TablePosition expected = GetTablePosition(0, 0, Directions.East);
+            TablePosition expected = GetExpectedTablePosition(0, 0, Directions.East);
 
             SteadyTurtle.Place(0, 0, "North");
             SteadyTurtle.Right();
@@ -81,13 +81,13 @@ namespace TurtleTravel.Business.Tests
         public void Test_Check_Place_Places_In_The_Specified_Positions_And_Direction()
         {
             Turtle SteadyTurtle = new Turtle();
-            TablePosition expected = GetTablePosition(0, 0, Directions.North);
+            TablePosition expected = GetExpectedTablePosition(0, 0, Directions.North);
 
             TablePosition actual = SteadyTurtle.Report();
 
             Assert.AreEqual(expected, actual);
 
-            expected = GetTablePosition(3, 4, Directions.East);
+            expected = GetExpectedTablePosition(3, 4, Directions.East);
             SteadyTurtle.Place(3, 4, "East");            
 
             actual = SteadyTurtle.Report();
@@ -99,13 +99,13 @@ namespace TurtleTravel.Business.Tests
         public void Test_Check_Turtle_Is_Prevented_From_Falling_From_Edges()
         {
             Turtle SteadyTurtle = new Turtle();
-            TablePosition expected = GetTablePosition(0, 0, Directions.North);
+            TablePosition expected = GetExpectedTablePosition(0, 0, Directions.North);
 
             TablePosition actual = SteadyTurtle.Report();
 
             Assert.AreEqual(expected, actual);
 
-            expected = GetTablePosition(5, 3, Directions.East);
+            expected = GetExpectedTablePosition(5, 3, Directions.East);
 
             SteadyTurtle.Place(5, 3, "East");
             actual = SteadyTurtle.Report();
@@ -120,7 +120,7 @@ namespace TurtleTravel.Business.Tests
             Assert.AreEqual(expected, actual);
             Assert.AreNotEqual(string.Empty, SteadyTurtle.Warning);
 
-            expected = GetTablePosition(4, 0, Directions.South);
+            expected = GetExpectedTablePosition(4, 0, Directions.South);
             SteadyTurtle.Place(4, 0, "South");
 
             actual = SteadyTurtle.Report();
@@ -136,7 +136,7 @@ namespace TurtleTravel.Business.Tests
             Assert.AreNotEqual(string.Empty, SteadyTurtle.Warning);
         }
 
-        private TablePosition GetTablePosition(int x, int y, Directions direction)
+        private TablePosition GetExpectedTablePosition(int x, int y, Directions direction)
         {
             TablePosition expected = new TablePosition();
 

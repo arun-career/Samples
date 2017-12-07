@@ -14,6 +14,7 @@
             string facingDirection = "North";
 
             Console.WriteLine(inputCommandText);
+            Console.WriteLine("Note: Input EXIT to quit the application");
             inputCommand = Console.ReadLine();
 
             string[] inputCommandParts = inputCommand.Split(' ');
