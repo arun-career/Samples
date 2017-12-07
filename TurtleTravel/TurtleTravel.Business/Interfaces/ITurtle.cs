@@ -8,6 +8,8 @@ namespace TurtleTravel.Business.Interfaces
 {
     public interface ITurtle
     {
+        string Warning { get; set; }
+
         void Place(int X, int Y, string Facing);
 
         void Move();
@@ -16,6 +18,6 @@ namespace TurtleTravel.Business.Interfaces
 
         void Right();
 
-        Turtle Report();
+        TablePosition Report();
     }
 }

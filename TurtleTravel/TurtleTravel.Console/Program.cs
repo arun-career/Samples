@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TurtleTravel.Console
+﻿namespace TurtleTravel.Console
 {
     using System;
+    using TurtleTravel.Business.Interfaces;
     using TurtleTravel.Business;
-
 
     class Program
     {
@@ -26,7 +20,7 @@ namespace TurtleTravel.Console
 
             while (inputCommandParts.Length != 2 || inputCommandParts[0].ToUpper() != "PLACE")
             {
-                Console.WriteLine("Initial command needs to PLACE (e.g. PLACE 3,4,SOUTH)");
+                Console.WriteLine("Initial command needs to be a valid PLACE command (e.g. PLACE 3,4,SOUTH)");
                 Console.WriteLine(inputCommandText);
                 inputCommand = Console.ReadLine();
                 inputCommandParts = inputCommand.Split(' ');
@@ -39,12 +33,15 @@ namespace TurtleTravel.Console
             int.TryParse(inputCommandSecondParts[1].Trim(), out yPosition);
             facingDirection = inputCommandSecondParts[2];
 
-            Turtle NinjaTurtle = new Turtle();
+            //Due to the deliverable constraint (no other dependences apart from unit test), 
+            //implementation of DI (Dependency Injection) has been avoided here.
+            ITurtle NinjaTurtle = new Turtle();
+
             NinjaTurtle.Place(xPosition, yPosition, facingDirection);
 
             inputCommand = Console.ReadLine();
 
-            while (inputCommand.ToUpper() != "REPORT")
+            while (inputCommand.ToUpper() != "EXIT")
             {
                 switch (inputCommand.ToUpper())
                 {
@@ -57,6 +54,18 @@ namespace TurtleTravel.Console
                     case "RIGHT":
                         NinjaTurtle.Right();
                         break;
+                    case "REPORT":
+                        TablePosition currentPosition = NinjaTurtle.Report();
+
+                        Console.WriteLine("------OUTPUT------");
+                        Console.WriteLine("{0},{1},{2}", currentPosition.XPosition, currentPosition.YPosition, currentPosition.FacingDirection.ToString().ToUpper());
+
+                        if (!string.IsNullOrEmpty(NinjaTurtle.Warning))
+                        {
+                            Console.WriteLine("Warning: {0}", NinjaTurtle.Warning);
+                        }
+
+                        break;
                     default:
                         break;
                 }
@@ -64,8 +73,7 @@ namespace TurtleTravel.Console
                 inputCommand = Console.ReadLine();
             }
 
-            Console.WriteLine("------OUTPUT------");
-            Console.WriteLine("{0},{1},{2}",NinjaTurtle.Report().XPosition, NinjaTurtle.Report().YPosition, NinjaTurtle.Report().FacingDirection);
+            Console.WriteLine("------EXITED------");
             Console.ReadLine();
         }
     }

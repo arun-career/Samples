@@ -8,74 +8,70 @@ namespace TurtleTravel.Business
 {
     using Interfaces;
     public class Turtle : ITurtle
-    {
-        public int XPosition { get; set; }
-
-        public int YPosition { get; set; }
-
-        public Directions FacingDirection { get; set; }
-
+    {                
         public string Warning { get; set; }
 
-        private bool _kickedOff;
+        private TablePosition currentPosition;
+        private bool kickedOff;
+        const int XMaxPosition = 5;
+        const int XMinPosition = 0;
+        const int YMaxPosition = 5;
+        const int YMinPosition = 0;
 
         public Turtle()
         {
-            XPosition = 0;
-            YPosition = 0;
-            FacingDirection = Directions.North;
+            this.currentPosition.XPosition = XMinPosition;
+            this.currentPosition.YPosition = YMinPosition;
+            this.currentPosition.FacingDirection = Directions.North;
+            Warning = string.Empty;
         }
 
         public void Place(int X, int Y, string Facing)
         {
-            //throw new NotImplementedException();
-            _kickedOff = true;
+            this.kickedOff = true;
 
-            XPosition = X;
-            YPosition = Y;
+            this.currentPosition.XPosition = X;
+            this.currentPosition.YPosition = Y;
 
             switch (Facing.ToLower())
             {
                 case "north":
-                    FacingDirection = Directions.North;
+                    this.currentPosition.FacingDirection = Directions.North;
                     break;
                 case "east":
-                    FacingDirection = Directions.East;
+                    this.currentPosition.FacingDirection = Directions.East;
                     break;
                 case "south":
-                    FacingDirection = Directions.South;
+                    this.currentPosition.FacingDirection = Directions.South;
                     break;
                 case "west":
-                    FacingDirection = Directions.West;
+                    this.currentPosition.FacingDirection = Directions.West;
                     break;
                 default:
-                    FacingDirection = Directions.North;
+                    this.currentPosition.FacingDirection = Directions.North;
                     break;
             }
-
 
             ValidateEdges();
         }
 
         public void Move()
         {
-            //throw new NotImplementedException();
-
             if (!IsKickedOff()) return;
 
-            switch (FacingDirection)
+            switch (this.currentPosition.FacingDirection)
             {
                 case Directions.North:
-                    YPosition++;
+                    this.currentPosition.YPosition++;
                     break;
                 case Directions.East:
-                    XPosition++;
+                    this.currentPosition.XPosition++;
                     break;
                 case Directions.South:
-                    YPosition--;
+                    this.currentPosition.YPosition--;
                     break;
                 case Directions.West:
-                    XPosition--;
+                    this.currentPosition.XPosition--;
                     break;
                 default:
                     break;
@@ -86,65 +82,50 @@ namespace TurtleTravel.Business
 
         public void Left()
         {
-            //throw new NotImplementedException();
-
-            if (!IsKickedOff()) return;
-
-            switch (FacingDirection)
-            {
-                case Directions.North:
-                    FacingDirection = Directions.West;
-                    break;
-                case Directions.East:
-                    FacingDirection = Directions.North;
-                    break;
-                case Directions.South:
-                    FacingDirection = Directions.East;
-                    break;
-                case Directions.West:
-                    FacingDirection = Directions.South;
-                    break;
-                default:
-                    break;
-            }
+            Rotate("Left");
         }
 
         public void Right()
         {
-            //throw new NotImplementedException();
+            Rotate("Right");            
+        }
 
+        public TablePosition Report()
+        {
+            //IsKickedOff();
+
+            return this.currentPosition;
+        }
+
+        private void Rotate(string Side)
+        {
             if (!IsKickedOff()) return;
 
-            switch (FacingDirection)
+            bool isRight = Side == "Right";
+
+            switch (this.currentPosition.FacingDirection)
             {
                 case Directions.North:
-                    FacingDirection = Directions.East;
+                    this.currentPosition.FacingDirection = isRight ? Directions.East : Directions.West;
                     break;
                 case Directions.East:
-                    FacingDirection = Directions.South;
+                    this.currentPosition.FacingDirection = isRight ? Directions.South : Directions.North;
                     break;
                 case Directions.South:
-                    FacingDirection = Directions.West;
+                    this.currentPosition.FacingDirection = isRight ? Directions.West : Directions.East;
                     break;
                 case Directions.West:
-                    FacingDirection = Directions.North;
+                    this.currentPosition.FacingDirection = isRight ? Directions.North : Directions.South;
                     break;
                 default:
                     break;
             }
         }
 
-        public Turtle Report()
-        {
-            IsKickedOff();
-
-            return this;
-        }
-
         private bool IsKickedOff()
         {
-            Warning = _kickedOff ? string.Empty : "Place command needs to be initiated";
-            return _kickedOff;
+            Warning = this.kickedOff ? string.Empty : "PLACE command needs to be initiated";
+            return this.kickedOff;
         }
 
         private void ValidateEdges()
@@ -153,28 +134,28 @@ namespace TurtleTravel.Business
 
             Warning = string.Empty;            
 
-            if (XPosition < 0)
+            if (this.currentPosition.XPosition < XMinPosition)
             {
                 Edge = "West";
-                XPosition = 0;
+                this.currentPosition.XPosition = XMinPosition;
             }
-            else if (XPosition > 5)
+            else if (this.currentPosition.XPosition > XMaxPosition)
             {
                 Edge = "East";
-                XPosition = 5;
+                this.currentPosition.XPosition = XMaxPosition;
             }
-            else if (YPosition < 0)
+            else if (this.currentPosition.YPosition < YMinPosition)
             {
                 Edge = "South";
-                YPosition = 0;
+                this.currentPosition.YPosition = YMinPosition;
             }
-            else if (YPosition > 5)
+            else if (this.currentPosition.YPosition > YMaxPosition)
             {
                 Edge = "North";
-                YPosition = 5;
+                this.currentPosition.YPosition = YMaxPosition;
             }
 
-            Warning = string.IsNullOrEmpty(Edge) ? Warning : "Reached " + Edge + " end";
+            Warning = string.IsNullOrEmpty(Edge) ? Warning : "Reached " + Edge.ToUpper() + " end";
         }
     }
 
@@ -184,5 +165,15 @@ namespace TurtleTravel.Business
         East = 2,
         South = 3,
         West = 4
+    }
+
+    public struct TablePosition
+    {
+        public int XPosition;
+
+        public int YPosition;
+
+        public Directions FacingDirection;
+
     }
 }

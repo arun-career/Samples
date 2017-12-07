@@ -11,118 +11,140 @@ namespace TurtleTravel.Business.Tests
         {
             Turtle SteadyTurtle = new Turtle();
 
-            Assert.AreEqual(0, SteadyTurtle.XPosition);
-            Assert.AreEqual(0, SteadyTurtle.YPosition);
-            Assert.AreEqual(Directions.North, SteadyTurtle.FacingDirection);
+            TablePosition expected = GetTablePosition(0, 0, Directions.North);
+
+            TablePosition actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Test_Check_Place_Command_Is_The_First_Valid_Command()
         {
-            Turtle NinJa = new Turtle();
+            Turtle SteadyTurtle = new Turtle();
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.North, NinJa.FacingDirection);
+            TablePosition expected = GetTablePosition(0, 0, Directions.North);
 
-            NinJa.Move();
+            TablePosition actual = SteadyTurtle.Report();
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.North, NinJa.FacingDirection);            
+            Assert.AreEqual(expected, actual);
+
+            SteadyTurtle.Move();
+            actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
         }        
 
         [TestMethod]
         public void Test_Check_Move_Forwards_1_Unit_Without_Changing_Direction()
         {
-            Turtle NinJa = new Turtle();
+            Turtle SteadyTurtle = new Turtle();
+            TablePosition expected = GetTablePosition(0, 1, Directions.North);
 
-            NinJa.Place(0, 0, "North");
-            NinJa.Move();
+            SteadyTurtle.Place(0, 0, "North");
+            SteadyTurtle.Move();
+            
+            TablePosition actual = SteadyTurtle.Report();
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(1, NinJa.YPosition);
-            Assert.AreEqual(Directions.North, NinJa.FacingDirection);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Test_Check_Left_Turns_90_Degree_Left_Without_Changing_Position()
         {
-            Turtle NinJa = new Turtle();
+            Turtle SteadyTurtle = new Turtle();
+            TablePosition expected = GetTablePosition(0, 0, Directions.West);
 
-            NinJa.Place(0, 0, "North");
-            NinJa.Left();
+            SteadyTurtle.Place(0, 0, "North");
+            SteadyTurtle.Left();
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.West, NinJa.FacingDirection);
+            TablePosition actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Test_Check_Right_Turns_90_Degree_Right_Without_Changing_Position()
         {
-            Turtle NinJa = new Turtle();
+            Turtle SteadyTurtle = new Turtle();
+            TablePosition expected = GetTablePosition(0, 0, Directions.East);
 
-            NinJa.Place(0, 0, "North");
-            NinJa.Right();
+            SteadyTurtle.Place(0, 0, "North");
+            SteadyTurtle.Right();
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.East, NinJa.FacingDirection);
+            TablePosition actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Test_Check_Place_Places_In_The_Specified_Positions_And_Direction()
         {
-            Turtle NinJa = new Turtle();
+            Turtle SteadyTurtle = new Turtle();
+            TablePosition expected = GetTablePosition(0, 0, Directions.North);
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.North, NinJa.FacingDirection);
+            TablePosition actual = SteadyTurtle.Report();
 
-            NinJa.Place(3, 4, "East");
+            Assert.AreEqual(expected, actual);
 
-            Assert.AreEqual(3, NinJa.XPosition);
-            Assert.AreEqual(4, NinJa.YPosition);
-            Assert.AreEqual(Directions.East, NinJa.FacingDirection);
+            expected = GetTablePosition(3, 4, Directions.East);
+            SteadyTurtle.Place(3, 4, "East");            
+
+            actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Test_Check_Turtle_Is_Prevented_From_Falling_From_Edges()
         {
-            Turtle NinJa = new Turtle();
+            Turtle SteadyTurtle = new Turtle();
+            TablePosition expected = GetTablePosition(0, 0, Directions.North);
 
-            Assert.AreEqual(0, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.North, NinJa.FacingDirection);
+            TablePosition actual = SteadyTurtle.Report();
 
-            NinJa.Place(5, 3, "East");
+            Assert.AreEqual(expected, actual);
 
-            Assert.AreEqual(5, NinJa.XPosition);
-            Assert.AreEqual(3, NinJa.YPosition);
-            Assert.AreEqual(Directions.East, NinJa.FacingDirection);
-            Assert.AreEqual(string.Empty, NinJa.Warning);
+            expected = GetTablePosition(5, 3, Directions.East);
 
-            NinJa.Move();
+            SteadyTurtle.Place(5, 3, "East");
+            actual = SteadyTurtle.Report();
 
-            Assert.AreEqual(5, NinJa.XPosition);
-            Assert.AreEqual(3, NinJa.YPosition);
-            Assert.AreEqual(Directions.East, NinJa.FacingDirection);
-            Assert.AreNotEqual(string.Empty, NinJa.Warning);
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(string.Empty, SteadyTurtle.Warning);
 
-            NinJa.Place(4, 0, "South");
+            SteadyTurtle.Move();
 
-            Assert.AreEqual(4, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.South, NinJa.FacingDirection);
-            Assert.AreEqual(string.Empty, NinJa.Warning);
+            actual = SteadyTurtle.Report();
 
-            NinJa.Move();
+            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(string.Empty, SteadyTurtle.Warning);
 
-            Assert.AreEqual(4, NinJa.XPosition);
-            Assert.AreEqual(0, NinJa.YPosition);
-            Assert.AreEqual(Directions.South, NinJa.FacingDirection);
-            Assert.AreNotEqual(string.Empty, NinJa.Warning);
+            expected = GetTablePosition(4, 0, Directions.South);
+            SteadyTurtle.Place(4, 0, "South");
+
+            actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(string.Empty, SteadyTurtle.Warning);
+
+            SteadyTurtle.Move();
+
+            actual = SteadyTurtle.Report();
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(string.Empty, SteadyTurtle.Warning);
+        }
+
+        private TablePosition GetTablePosition(int x, int y, Directions direction)
+        {
+            TablePosition expected = new TablePosition();
+
+            expected.XPosition = x;
+            expected.YPosition = y;
+            expected.FacingDirection = direction;
+
+            return expected;
         }
     }
 }
