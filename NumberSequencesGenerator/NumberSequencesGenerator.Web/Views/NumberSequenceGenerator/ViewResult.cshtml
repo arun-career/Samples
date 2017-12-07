@@ -1,0 +1,36 @@
+﻿@using System.Collections.Generic;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewResult</title>
+</head>
+<body>
+    <form action="ViewResult" method="post">
+        <div>
+            This is the result page!<br/>
+            @ViewBag.Heading
+
+            @{
+                var resultDcit = ViewBag.ResultDictionary;
+                foreach (KeyValuePair<string, List<string>> entry in resultDcit)
+                {
+                    @entry.Key <br/>
+                    foreach(string result in entry.Value)
+                    {
+                        @result <br/>
+                    }
+
+                    <br/>
+                    <br />
+                }
+            }
+        </div>
+     </form>
+</body>
+</html>
