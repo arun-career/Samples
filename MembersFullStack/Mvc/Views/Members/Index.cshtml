@@ -1,4 +1,4 @@
-﻿
+﻿@using CBHS.Business.Interfaces;
 @{
     ViewBag.Title = "Index";
 }
@@ -27,5 +27,37 @@
         </tr>
     </table>
     }
+
+
+    <table>
+    @{
+        if (ViewBag.Members!=null)
+        {
+            foreach (var member in ViewBag.Members)
+            {
+        <tr>
+            <td>@member.MemberId</td>
+            <td>@member.FirstName</td>
+            <td>@member.LastName</td>
+            <td>@member.Email</td>
+            <td>@member.DateOfBirth</td>
+        </tr>
+            }
+        }
+
+        if (ViewBag.oldestMember!= null)
+        {
+            var oldestMember = ViewBag.oldestMember;
+            <tr>
+                <td colspan="5"><br/></td>
+            </tr>
+            <tr>
+                <td>@((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days/365)</td>
+                <td colspan="2">@oldestMember.FirstName</td>
+                <td colspan="2">@oldestMember.LastName</td>
+            </tr>
+        }
+    }
+    </table>
 </body>
 </html>

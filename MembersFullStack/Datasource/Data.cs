@@ -9,9 +9,20 @@ namespace CBHS.Datasource
     public static class Data
     {
         private static List<Member> members = new List<Member>();
-        public static void AddMember(Member member)
+        public static int AddMember(Member member)
         {
-            members.Add(member);
+            member.MemberId = members.Count() + 1;
+            try
+            {
+                members.Add(member);
+            }
+            catch (Exception ex)
+            {
+                //Log the exception
+                return 0;
+            }
+
+            return member.MemberId;
         }
         public static List<Member> GetMembers()
         {

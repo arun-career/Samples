@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-//using System.Web.Mvc;
 
 namespace CBHS.Webapi.Controllers
 {
@@ -32,7 +31,35 @@ namespace CBHS.Webapi.Controllers
             //throw new NotImplementedException();
             //Data.AddMember(member);
 
-            return 0;
+            var databaseMember = new Member()
+            {
+                FirstName = member.FirstName,
+                LastName = member.LastName,
+                Email = member.Email,
+                DateOfBirth = member.DateOfBirth
+            };
+
+            var memberId = Data.AddMember(databaseMember);
+
+            return memberId;
+        }
+
+        [HttpPost]
+        [Route("Members")]
+        public List<IMember>  List()
+        {
+            var listOfDataMembers = Data.GetMembers();
+
+            var listOfMembers = listOfDataMembers.ConvertAll(m => new Business.Member
+                                        {
+                                        MemberId = m.MemberId,
+                                        FirstName =m.FirstName,
+                                        LastName = m.LastName,
+                                        Email = m.Email,
+                                        DateOfBirth = m.DateOfBirth
+                                        });
+
+            return listOfMembers.ToList<IMember>();
         }
     }
 }

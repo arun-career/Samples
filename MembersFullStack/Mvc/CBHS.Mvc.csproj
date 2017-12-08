@@ -89,6 +89,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -169,6 +170,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBHS.Business\CBHS.Business.csproj">
+      <Project>{211c408f-231e-4a38-932b-4483c00f37b2}</Project>
+      <Name>CBHS.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Webapi\CBHS.Webapi.csproj">
+      <Project>{eb680336-c4cd-45e7-9fc0-25044be58aab}</Project>
+      <Name>CBHS.Webapi</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
