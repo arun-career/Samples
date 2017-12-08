@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+</head>
+<body>
+    @using (Html.BeginForm("Add", "Members", FormMethod.Post))
+    {
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>@Html.TextBox("FirstName")</td>
+            <td>Email</td>
+            <td>@Html.TextBox("Email")</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>@Html.TextBox("LastName")</td>
+            <td>Date of birth</td>
+            <td>@Html.TextBox("DateOfBirth")</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td align="right"><input type="submit" name="Add" id="Add" value="Add" /></td>
+        </tr>
+    </table>
+    }
+</body>
+</html>
