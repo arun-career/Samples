@@ -1,18 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CBHS.Datasource
 {
-    public class Member
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Member
     {
         public int MemberId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string DateOfBirth { get; set; }
 
+        [StringLength(30)]
+        public string FirstName { get; set; }
+
+        [StringLength(30)]
+        public string LastName { get; set; }
+
+        [StringLength(50)]
+        public string Email { get; set; }
+
+        [StringLength(10)]
+        public string DateOfBirth { get; set; }
     }
 }

@@ -26,40 +26,20 @@ namespace CBHS.Webapi.Controllers
         //POST: Member
         [HttpPost]
         [Route("members")]
-        public int Add(IMember member)
+        public bool Add(IMember member)
         {
             //throw new NotImplementedException();
-            //Data.AddMember(member);
-
-            var databaseMember = new Member()
-            {
-                FirstName = member.FirstName,
-                LastName = member.LastName,
-                Email = member.Email,
-                DateOfBirth = member.DateOfBirth
-            };
-
-            var memberId = Data.AddMember(databaseMember);
-
-            return memberId;
+        
+            return Member.Add(member);
         }
 
         [HttpPost]
         [Route("Members")]
-        public List<IMember>  List()
+        public IList<IMember>  List()
         {
-            var listOfDataMembers = Data.GetMembers();
+            var listOfMembers = Member.List(); ;
 
-            var listOfMembers = listOfDataMembers.ConvertAll(m => new Business.Member
-                                        {
-                                        MemberId = m.MemberId,
-                                        FirstName =m.FirstName,
-                                        LastName = m.LastName,
-                                        Email = m.Email,
-                                        DateOfBirth = m.DateOfBirth
-                                        });
-
-            return listOfMembers.ToList<IMember>();
+            return listOfMembers;
         }
     }
 }

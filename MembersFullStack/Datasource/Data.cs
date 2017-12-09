@@ -9,24 +9,39 @@ namespace CBHS.Datasource
     public static class Data
     {
         private static List<Member> members = new List<Member>();
-        public static int AddMember(Member member)
+        public static bool AddMember(Member member)
         {
-            member.MemberId = members.Count() + 1;
+            //member.MemberId = members.Count() + 1;
             try
             {
-                members.Add(member);
+                //members.Add(member);
+                using (var db = new CBHSDBContext())
+                {
+                    db.Members.Add(member);
+                    db.SaveChanges();
+                }
+
+                return true;
             }
             catch (Exception ex)
             {
                 //Log the exception
-                return 0;
+                return false;
             }
-
-            return member.MemberId;
         }
         public static List<Member> GetMembers()
         {
-            return members;
+            var result = new List<Member>();
+
+            using (var db = new CBHSDBContext())
+            {
+                var query = from m in db.Members
+                            orderby m.MemberId
+                            select m;
+                result = query.ToList<Member>();
+            }
+
+            return result;
         }
     }
 }

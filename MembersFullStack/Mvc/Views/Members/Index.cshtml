@@ -8,7 +8,7 @@
 <body>
     @using (Html.BeginForm("Add", "Members", FormMethod.Post))
     {
-    <table>
+    <table class="table">
         <tr>
             <td>First Name</td>
             <td>@Html.TextBox("FirstName")</td>
@@ -23,41 +23,47 @@
         </tr>
         <tr>
             <td colspan="3"></td>
-            <td align="right"><input type="submit" name="Add" id="Add" value="Add" /></td>
+            <td align="right"><input type="submit" name="Add" id="Add" value="Add" class="btn-default"/></td>
         </tr>
     </table>
     }
 
 
-    <table>
+    
     @{
-        if (ViewBag.Members!=null)
-        {
+        <table class="table">
+            @if (ViewBag.Members!=null)
+            {
             foreach (var member in ViewBag.Members)
             {
-        <tr>
-            <td>@member.MemberId</td>
-            <td>@member.FirstName</td>
-            <td>@member.LastName</td>
-            <td>@member.Email</td>
-            <td>@member.DateOfBirth</td>
-        </tr>
+            <tr>
+                <td>@member.MemberId</td>
+                <td>@member.FirstName</td>
+                <td>@member.LastName</td>
+                <td>@member.Email</td>
+                <td>@member.DateOfBirth</td>
+            </tr>
             }
-        }
+            }
 
-        if (ViewBag.oldestMember!= null)
-        {
+            @if (ViewBag.oldestMember!= null)
+            {
             var oldestMember = ViewBag.oldestMember;
             <tr>
-                <td colspan="5"><br/></td>
+                <td colspan="5"><br /></td>
             </tr>
             <tr>
-                <td>@((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days/365)</td>
-                <td colspan="2">@oldestMember.FirstName</td>
-                <td colspan="2">@oldestMember.LastName</td>
+                <td align="left"><b>Oldest Member</b></td>
+                <td colspan="4"><br /></td>                
             </tr>
-        }
-    }
-    </table>
+            <tr>
+                <td colspan="3">@((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days / 365) , 
+                    @oldestMember.FirstName ,
+                    @oldestMember.LastName</td>
+                <td colspan="2"><br /></td>
+            </tr>
+            }
+        </table>
+    }        
 </body>
 </html>

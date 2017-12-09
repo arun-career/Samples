@@ -14,6 +14,7 @@ namespace CBHS.Business.Interfaces
         string Email { get; set; }
         string DateOfBirth { get; set; }
 
-        int Add(IMember Member);
+        bool Add(IMember Member);
+        IList<IMember> List();
     }
 }

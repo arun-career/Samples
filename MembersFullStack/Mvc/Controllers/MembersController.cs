@@ -15,16 +15,13 @@ namespace CBHS.Mvc.Controllers
         // GET: Members
         public ActionResult Index()
         {
-            if (ViewBag.Members!=null)
-            {
-                ViewBag.Members = new List<IMember>();
-            }
+            GetMembersInfo();
             return View();
         }
 
         public ActionResult Add(FormCollection collection)
         {
-            IMember memberMvc = new Member
+            var memberMvc = new Member
             {
                 FirstName = collection["FirstName"],
                 LastName = collection["LastName"],
@@ -35,12 +32,20 @@ namespace CBHS.Mvc.Controllers
             var membersController = new CBHS.Webapi.Controllers.MembersController(memberMvc);
             membersController.Add(memberMvc);
 
+            GetMembersInfo();
+
+            return View("Index");
+        }
+
+        private void GetMembersInfo()
+        {
+            var memberMvc = new Member();
+
+            var membersController = new CBHS.Webapi.Controllers.MembersController(memberMvc);
             var listOfMembers = membersController.List();
 
             ViewBag.Members = listOfMembers;
             ViewBag.oldestMember = listOfMembers.OrderBy(m => Convert.ToDateTime(m.DateOfBirth)).FirstOrDefault();
-
-            return View("Index");
         }
     }
 }

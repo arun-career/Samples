@@ -15,26 +15,18 @@ namespace CBHS.Webapi.Tests
     {
         [TestMethod]
         public void Test_Check_Member_Is_Added()
-        {
-            //Member SampleMember = new Member()
-            //{
-            //    FirstName = "SampleFirstName",
-            //    LastName = "SampleLastName",
-            //    Email = "Sample@email.com",
-            //    DateOfBirth = "01/01/2000"
-            //};
-
+        {           
             var mockMember = new Mock<IMember>();
             mockMember.SetupProperty(member => member.FirstName, "SampleFirstName")
                         .SetupProperty(member => member.LastName, "SampleLastName")
                         .SetupProperty(member => member.Email, "Sample@email.com")
                         .SetupProperty(member => member.DateOfBirth, "01/01/2000");
-            mockMember.Setup(member => member.Add(mockMember.Object)).Returns(1);
+            mockMember.Setup(member => member.Add(mockMember.Object)).Returns(true);
                         
             var membersController = new MembersController(mockMember.Object);
-            var MemberId = membersController.Add(mockMember.Object);
+            var IsAdded = membersController.Add(mockMember.Object);
 
-            Assert.IsTrue(MemberId > 0);
+            Assert.IsTrue(IsAdded);
         }
     }
 }
