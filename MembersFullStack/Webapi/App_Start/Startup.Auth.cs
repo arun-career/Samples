@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Webapi.Providers;
-using Webapi.Models;
+using CBHS.Webapi.Providers;
+using CBHS.Webapi.Models;
 
-namespace Webapi
+namespace CBHS.Webapi
 {
     public partial class Startup
     {

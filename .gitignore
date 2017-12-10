@@ -1,3 +1,17 @@
+/MembersFullStack/CBHS.Business/bin/
+/MembersFullStack/CBHS.Entity/bin/
+/MembersFullStack/CBHS.Entity/obj/
+/MembersFullStack/CBHS.Mvc.Tests/bin/
+/MembersFullStack/CBHS.Mvc.Tests/obj/
+/MembersFullStack/CBHS.Web.Tests/bin/
+/MembersFullStack/CBHS.Web.Tests/obj/
+/MembersFullStack/CBHS.Web/bin/
+/MembersFullStack/CBHS.Web/obj/
+/MembersFullStack/Datasource/bin/
+/MembersFullStack/Datasource/obj/
+/MembersFullStack/Webapi/bin/
+/MembersFullStack/Webapi/obj/
+/MembersFullStack/packages/
 /MembersFullStack/CBHS.Business/bin/Debug/CBHS.Business.dll
 /MembersFullStack/CBHS.Business/bin/Debug/CBHS.Business.pdb
 /MembersFullStack/CBHS.Business/obj/Debug/CBHS.Business.csproj.FileListAbsolute.txt
@@ -902,3 +916,8 @@
 /MembersFullStack/Webapi/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
 /MembersFullStack/Webapi/obj/Release/Webapi.dll
 /MembersFullStack/Webapi/obj/Release/Webapi.pdb
+/MembersFullStack/CBHS Programmer Analyst Exam V3.docx
+/MembersFullStack/CBHS.Business/bin/Debug/AutoMapper.dll
+/MembersFullStack/CBHS.Business/bin/Debug/AutoMapper.xml
+/MembersFullStack/CBHS.Business/bin/Debug/CBHS.Entity.dll
+/MembersFullStack/CBHS.Business/bin/Debug/CBHS.Entity.pdb

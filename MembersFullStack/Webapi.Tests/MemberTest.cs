@@ -16,7 +16,7 @@ namespace CBHS.Webapi.Tests
         [TestMethod]
         public void Test_Check_Member_Is_Added()
         {           
-            var mockMember = new Mock<IMember>();
+            var mockMember = new Mock<IMemberService>();
             mockMember.SetupProperty(member => member.FirstName, "SampleFirstName")
                         .SetupProperty(member => member.LastName, "SampleLastName")
                         .SetupProperty(member => member.Email, "Sample@email.com")

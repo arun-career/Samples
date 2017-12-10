@@ -5,8 +5,12 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using CBHS.Business.Interfaces;
+using CBHS.Business;
+using SimpleInjector.Integration.WebApi;
+using CBHS.Datasource;
 
-namespace Webapi
+namespace CBHS.Webapi
 {
     public static class WebApiConfig
     {
@@ -25,6 +29,13 @@ namespace Webapi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var container = new SimpleInjector.Container();
+
+            container.Register<IMemberService, MemberService>();
+            container.Register<IDataRepository, DataRepository>();
+
+            config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
     }
 }

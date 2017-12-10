@@ -1,4 +1,4 @@
-namespace Webapi.Areas.HelpPage.ModelDescriptions
+namespace CBHS.Webapi.Areas.HelpPage.ModelDescriptions
 {
     public class CollectionModelDescription : ModelDescription
     {

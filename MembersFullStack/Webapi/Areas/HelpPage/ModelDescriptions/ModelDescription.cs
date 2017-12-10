@@ -1,6 +1,6 @@
 using System;
 
-namespace Webapi.Areas.HelpPage.ModelDescriptions
+namespace CBHS.Webapi.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

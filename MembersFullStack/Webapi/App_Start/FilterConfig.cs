@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Webapi
+namespace CBHS.Webapi
 {
     public class FilterConfig
     {

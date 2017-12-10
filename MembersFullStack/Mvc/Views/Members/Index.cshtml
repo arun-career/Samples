@@ -1,4 +1,4 @@
-﻿@using CBHS.Business.Interfaces;
+﻿@model IEnumerable<CBHS.Mvc.Models.MemberMvcModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -28,13 +28,18 @@
     </table>
     }
 
-
-    
     @{
         <table class="table">
-            @if (ViewBag.Members!=null)
+            @if (Model != null)
             {
-            foreach (var member in ViewBag.Members)
+            <tr class="">
+                <td>Member Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Date Of Birth</td>
+            </tr>
+            foreach (var member in Model)
             {
             <tr>
                 <td>@member.MemberId</td>
@@ -44,26 +49,26 @@
                 <td>@member.DateOfBirth</td>
             </tr>
             }
-            }
+        }
 
-            @if (ViewBag.oldestMember!= null)
-            {
-            var oldestMember = ViewBag.oldestMember;
-            <tr>
-                <td colspan="5"><br /></td>
-            </tr>
-            <tr>
-                <td align="left"><b>Oldest Member</b></td>
-                <td colspan="4"><br /></td>                
-            </tr>
-            <tr>
-                <td colspan="3">@((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days / 365) , 
-                    @oldestMember.FirstName ,
-                    @oldestMember.LastName</td>
-                <td colspan="2"><br /></td>
-            </tr>
-            }
-        </table>
+        @if (ViewBag.oldestMember!= null)
+        {
+        var oldestMember = ViewBag.oldestMember;
+        <tr>
+            <td colspan="5"><br /></td>
+        </tr>
+        <tr>
+            <td align="left"><b>Oldest Member</b></td>
+            <td colspan="4"><br /></td>                
+        </tr>
+        <tr>
+            <td colspan="3">@((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days / 365) , 
+                @oldestMember.FirstName ,
+                @oldestMember.LastName</td>
+            <td colspan="2"><br /></td>
+        </tr>
+        }
+    </table>
     }        
 </body>
 </html>

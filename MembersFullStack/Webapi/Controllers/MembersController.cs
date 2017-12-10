@@ -6,38 +6,44 @@ using System.Web.Http;
 
 namespace CBHS.Webapi.Controllers
 {
+    using AutoMapper;
     using CBHS.Business.Interfaces;
-    using CBHS.Datasource;
+    using CBHS.Webapi.Models;
+    using CBHS.Entity;
 
     public class MembersController : ApiController
     {
-
         #region Properties
 
-        private IMember Member { get; set; }
-        
+        private IMemberService _service { get; set; }
+        private IMapper _mapper;
+
         #endregion
 
-        public MembersController(IMember member)
+        public MembersController(IMemberService service)
         {
-            Member = member;
+            _service = service;
+            _mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Models.MemberModel, Entity.Member>();
+                cfg.CreateMap<Entity.Member, Models.MemberModel>();
+            }).CreateMapper();
         }
 
         //POST: Member
         [HttpPost]
         [Route("members")]
-        public bool Add(IMember member)
+        public bool Add(MemberModel memberModel)
         {
-            //throw new NotImplementedException();
-        
-            return Member.Add(member);
+            return _service.Add(_mapper.Map<Models.MemberModel, Entity.Member>(memberModel));
         }
 
-        [HttpPost]
-        [Route("Members")]
-        public IList<IMember>  List()
+        //GET Member
+        [HttpGet]
+        [Route("members")]
+        public IList<MemberModel>  List()
         {
-            var listOfMembers = Member.List(); ;
+            var listOfMembers = _mapper.Map<IList<Entity.Member>, List<Models.MemberModel>>(_service.List());
 
             return listOfMembers;
         }

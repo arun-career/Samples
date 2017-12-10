@@ -41,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IMember.cs" />
-    <Compile Include="Member.cs" />
+    <Compile Include="Interfaces\IMemberService.cs" />
+    <Compile Include="MemberService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CBHS.Entity\CBHS.Entity.csproj">
+      <Project>{3a89e52a-972f-44af-b5be-7dace281182a}</Project>
+      <Name>CBHS.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Datasource\CBHS.Datasource.csproj">
       <Project>{e36c9f61-b7f9-4396-8cee-59ffcaccb4f1}</Project>
       <Name>CBHS.Datasource</Name>

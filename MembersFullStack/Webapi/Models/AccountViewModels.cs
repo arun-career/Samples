@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Webapi.Models
+namespace CBHS.Webapi.Models
 {
     // Models returned by AccountController actions.
 

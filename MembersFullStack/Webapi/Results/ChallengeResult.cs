@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace Webapi.Results
+namespace CBHS.Webapi.Results
 {
     public class ChallengeResult : IHttpActionResult
     {

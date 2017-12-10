@@ -6,22 +6,37 @@ using System.Web.Mvc;
 
 namespace CBHS.Mvc.Controllers
 {
-    using CBHS.Business.Interfaces;
-    using CBHS.Business;
-    using CBHS.Webapi.Controllers;
+    using System.Configuration;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using Models;
 
     public class MembersController : Controller
     {
         // GET: Members
         public ActionResult Index()
         {
-            GetMembersInfo();
-            return View();
+            var url = ConfigurationManager.AppSettings["apiUrl"];
+
+            var client = new WebClient();
+
+            var json = client.DownloadString($"{url}/members");
+
+            var listOfMembers = JsonConvert.DeserializeObject<List<MemberMvcModel>>(json);
+
+            //var membersController = new CBHS.Webapi.Controllers.MembersController(memberMvc);
+            //var listOfMembers = membersController.List();
+
+            //ViewBag.Members = listOfMembers;
+            ViewBag.oldestMember = listOfMembers.OrderBy(m => Convert.ToDateTime(m.DateOfBirth)).FirstOrDefault();
+
+            return View(listOfMembers);
         }
 
         public ActionResult Add(FormCollection collection)
         {
-            var memberMvc = new Member
+            var memberModelMvc = new MemberMvcModel()
             {
                 FirstName = collection["FirstName"],
                 LastName = collection["LastName"],
@@ -29,23 +44,23 @@ namespace CBHS.Mvc.Controllers
                 DateOfBirth = collection["DateOfBirth"]
             };
 
-            var membersController = new CBHS.Webapi.Controllers.MembersController(memberMvc);
-            membersController.Add(memberMvc);
 
-            GetMembersInfo();
 
-            return View("Index");
-        }
+            //var membersController = new CBHS.Webapi.Controllers.MembersController(memberMvc);
+            //membersController.Add(memberMvc);
+            var url = ConfigurationManager.AppSettings["apiUrl"];
 
-        private void GetMembersInfo()
-        {
-            var memberMvc = new Member();
+            var client = new WebClient();
 
-            var membersController = new CBHS.Webapi.Controllers.MembersController(memberMvc);
-            var listOfMembers = membersController.List();
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+            //.Add("Accept: application/json");
+            //client.Headers.Add("ContentType: application/json");
+            
+            var jsonStringMvcModel = JsonConvert.SerializeObject(memberModelMvc);
 
-            ViewBag.Members = listOfMembers;
-            ViewBag.oldestMember = listOfMembers.OrderBy(m => Convert.ToDateTime(m.DateOfBirth)).FirstOrDefault();
-        }
+            var json = client.UploadString($"{url}/members", jsonStringMvcModel);
+
+            return RedirectToAction("Index");
+        }        
     }
 }
