@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CBHS.Mvc.Models.MemberMvcModel>
+@{
+    if (Model.Count() > 0)
+    {
+        <table class="table">
+            <tr>
+                <td colspan="5"><b>Members</b></td>
+            </tr>
+            <tr>
+                <td>Member Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Date Of Birth</td>
+            </tr>
+            @foreach (var member in Model)
+            {
+            <tr>
+                <td>@member.MemberId</td>
+                <td>@member.FirstName</td>
+                <td>@member.LastName</td>
+                <td>@member.Email</td>
+                <td>@member.DateOfBirth</td>
+            </tr>
+            }
+        </table>
+        Html.RenderPartial("_OldestMember", Model.OrderBy(m => Convert.ToDateTime(m.DateOfBirth)).FirstOrDefault());
+    }
+}
+

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CBHS.Mvc.Models.MemberMvcModel>
+﻿@model CBHS.Mvc.Models.MemberMvcModel
 @{
     ViewBag.Title = "Index";
 }
@@ -11,15 +11,15 @@
     <table class="table">
         <tr>
             <td>First Name</td>
-            <td>@Html.TextBox("FirstName")</td>
+            <td>@Html.EditorFor(m=>m.FirstName)</td>
             <td>Email</td>
-            <td>@Html.TextBox("Email")</td>
+            <td>@Html.EditorFor(m => m.Email)</td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td>@Html.TextBox("LastName")</td>
+            <td>@Html.EditorFor(m => m.LastName)</td>
             <td>Date of birth</td>
-            <td>@Html.TextBox("DateOfBirth")</td>
+            <td>@Html.EditorFor(m => m.DateOfBirth)</td>
         </tr>
         <tr>
             <td colspan="3"></td>
@@ -27,48 +27,6 @@
         </tr>
     </table>
     }
-
-    @{
-        <table class="table">
-            @if (Model != null)
-            {
-            <tr class="">
-                <td>Member Id</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Email</td>
-                <td>Date Of Birth</td>
-            </tr>
-            foreach (var member in Model)
-            {
-            <tr>
-                <td>@member.MemberId</td>
-                <td>@member.FirstName</td>
-                <td>@member.LastName</td>
-                <td>@member.Email</td>
-                <td>@member.DateOfBirth</td>
-            </tr>
-            }
-        }
-
-        @if (ViewBag.oldestMember!= null)
-        {
-        var oldestMember = ViewBag.oldestMember;
-        <tr>
-            <td colspan="5"><br /></td>
-        </tr>
-        <tr>
-            <td align="left"><b>Oldest Member</b></td>
-            <td colspan="4"><br /></td>                
-        </tr>
-        <tr>
-            <td colspan="3">@((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days / 365) , 
-                @oldestMember.FirstName ,
-                @oldestMember.LastName</td>
-            <td colspan="2"><br /></td>
-        </tr>
-        }
-    </table>
-    }        
+    @Html.Action("_ListMembers")    
 </body>
 </html>

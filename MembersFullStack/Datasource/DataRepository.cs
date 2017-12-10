@@ -48,7 +48,7 @@ namespace CBHS.Datasource
             using (var db = new CBHSDBContext())
             {
                 var query = from m in db.Members
-                            orderby m.MemberId
+                            orderby m.MemberId descending
                             select m;
 
                 result = _mapper.Map<List<Datasource.Member>, List<Entity.Member>>(query.ToList<Member>());
