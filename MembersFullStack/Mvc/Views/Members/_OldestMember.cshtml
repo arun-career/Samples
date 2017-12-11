@@ -1,16 +1,15 @@
 ﻿@model CBHS.Mvc.Models.MemberMvcModel
 <table class="table">
-    @if (Model.MemberId > 0)
+    @if (Model.OldestMember != null)
     {
-        var oldestMember = Model;
+        var oldestMember = Model.OldestMember;
         <tr>
             <td align="left"><b>Oldest Member</b></td>
             <td colspan="4"><br /></td>
         </tr>
         <tr>
             <td colspan="3">
-            @((DateTime.Today - Convert.ToDateTime(oldestMember.DateOfBirth)).Days / 365) ,
-            @oldestMember.FirstName  @oldestMember.LastName.ToUpper()
+            @oldestMember.Age , @oldestMember.FirstName  @oldestMember.LastName.ToUpper()
         </td>
         <td colspan="2"><br /></td>
     </tr>

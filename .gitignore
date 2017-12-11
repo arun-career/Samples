@@ -13,6 +13,8 @@
 /MembersFullStack/Webapi/bin/
 /MembersFullStack/Webapi/obj/
 /MembersFullStack/packages/
+/MembersFullStack/Webapi.Tests/bin/
+/MembersFullStack/Webapi.Tests/obj/
 /MembersFullStack/CBHS.Business/bin/Debug/CBHS.Business.dll
 /MembersFullStack/CBHS.Business/bin/Debug/CBHS.Business.pdb
 /MembersFullStack/CBHS.Business/obj/Debug/CBHS.Business.csproj.FileListAbsolute.txt

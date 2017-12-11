@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CBHS.Business
 {
     using Interfaces;
     using Entity;
+    using System.Linq;
+    using System;
 
     public class MemberService : IMemberService
     {
@@ -27,16 +25,12 @@ namespace CBHS.Business
         {
             var listOfDataMembers = _repository.GetMembers();
 
-            var listOfMembers = listOfDataMembers.ConvertAll(m => new Member
-            {
-                MemberId = m.MemberId,
-                FirstName = m.FirstName,
-                LastName = m.LastName,
-                Email = m.Email,
-                DateOfBirth = m.DateOfBirth
-            });
+            return listOfDataMembers;
+        }
 
-            return listOfMembers.ToList<Member>();
+        public Member GetOldestMember()
+        {
+            return _repository.GetMembers().OrderByDescending(m => Convert.ToDateTime(m.DateOfBirth)).SingleOrDefault()
         }
     }
 }

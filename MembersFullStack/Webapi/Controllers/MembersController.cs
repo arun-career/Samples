@@ -47,5 +47,15 @@ namespace CBHS.Webapi.Controllers
 
             return listOfMembers;
         }
+
+        //GET Member
+        [HttpGet]
+        [Route("members/oldest")]
+        public MemberModel Oldest()
+        {
+            var OldestMember = _mapper.Map<Entity.Member, Models.MemberModel>(_service.GetOldestMember());
+
+            return OldestMember;
+        }
     }
 }

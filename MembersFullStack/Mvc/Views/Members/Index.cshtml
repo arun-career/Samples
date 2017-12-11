@@ -1,4 +1,5 @@
 ﻿@model CBHS.Mvc.Models.MemberMvcModel
+
 @{
     ViewBag.Title = "Index";
 }
@@ -6,27 +7,44 @@
 <head>
 </head>
 <body>
+    <br />
     @using (Html.BeginForm("Add", "Members", FormMethod.Post))
     {
-    <table class="table">
+    <table class="table table-bordered table-responsive">
+        <tr>
+            <td colspan="5"><b>Input Member</b></td>
+        </tr>
         <tr>
             <td>First Name</td>
-            <td>@Html.EditorFor(m=>m.FirstName)</td>
+            <td>
+                @Html.EditorFor(m => m.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </td>
             <td>Email</td>
-            <td>@Html.EditorFor(m => m.Email)</td>
+            <td>
+                @Html.EditorFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td>@Html.EditorFor(m => m.LastName)</td>
+            <td>
+                @Html.EditorFor(m => m.LastName)
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </td>
             <td>Date of birth</td>
-            <td>@Html.EditorFor(m => m.DateOfBirth)</td>
+            <td>
+                @Html.EditorFor(m => m.DateOfBirth)
+                @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+            </td>
         </tr>
         <tr>
             <td colspan="3"></td>
-            <td align="right"><input type="submit" name="Add" id="Add" value="Add" class="btn-default"/></td>
+            <td align="right"><input type="submit" name="Add" id="Add" value="Add" class="btn btn-primary"/></td>
         </tr>
     </table>
     }
-    @Html.Action("_ListMembers")    
+   @Html.Partial("_ListMembers", Model)    
+   @Html.Partial("_OldestMember", Model)
 </body>
 </html>

@@ -8,5 +8,7 @@ namespace CBHS.Business.Interfaces
         bool Add(Member Member);
 
         IList<Member> List();
+
+        Member GetOldestMember();
     }
 }

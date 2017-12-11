@@ -22,10 +22,8 @@ namespace CBHS.Datasource
 
         public bool AddMember(Entity.Member member)
         {
-            //member.MemberId = members.Count() + 1;
             try
             {
-                //members.Add(member);
                 using (var db = new CBHSDBContext())
                 {
                     db.Members.Add(_mapper.Map<Entity.Member, Datasource.Member>(member));
