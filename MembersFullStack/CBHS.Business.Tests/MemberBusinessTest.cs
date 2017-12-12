@@ -35,7 +35,6 @@ namespace CBHS.Business.Tests
             });
 
             //Assert
-            //mockRepository.VerifyAll();
             Assert.IsTrue(IsAdded);
         }
 

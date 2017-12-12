@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace CBHS.Webapi.Controllers
@@ -9,7 +6,6 @@ namespace CBHS.Webapi.Controllers
     using AutoMapper;
     using CBHS.Business.Interfaces;
     using CBHS.Webapi.Models;
-    using CBHS.Entity;
 
     [RoutePrefix("")]
     public class MembersController : ApiController

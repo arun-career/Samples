@@ -16,7 +16,7 @@ namespace CBHS.Mvc.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please input Email")]
         public string Email { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please input Date of birth")]
         public string DateOfBirth { get; set; }
 
         public List<MemberListModel> MembersList { get; set; }
