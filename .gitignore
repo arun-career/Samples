@@ -1,5 +1,7 @@
 /MembersFullStack/CBHS.Business/bin/
 /MembersFullStack/CBHS.Business/obj/
+/MembersFullStack/CBHS.Business.Tests/bin/
+/MembersFullStack/CBHS.Business.Tests/obj/
 /MembersFullStack/CBHS.Entity/bin/
 /MembersFullStack/CBHS.Entity/obj/
 /MembersFullStack/CBHS.Mvc.Tests/bin/

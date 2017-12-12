@@ -11,6 +11,7 @@ namespace CBHS.Webapi.Controllers
     using CBHS.Webapi.Models;
     using CBHS.Entity;
 
+    [RoutePrefix("")]
     public class MembersController : ApiController
     {
         #region Properties
@@ -40,6 +41,7 @@ namespace CBHS.Webapi.Controllers
 
         //GET Member
         [HttpGet]
+        [Route("")]
         [Route("members")]
         public IList<MemberModel>  List()
         {

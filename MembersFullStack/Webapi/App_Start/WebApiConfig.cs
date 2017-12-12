@@ -22,7 +22,7 @@ namespace CBHS.Webapi
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { controller = "Members", id = RouteParameter.Optional }
             );
 
             var container = new SimpleInjector.Container();

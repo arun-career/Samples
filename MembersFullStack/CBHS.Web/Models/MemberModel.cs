@@ -1,7 +1,10 @@
-﻿namespace CBHS.Web.Models
+﻿using System.ComponentModel;
+
+namespace CBHS.Web.Models
 {
     public class MemberWebModel
     {
+        [DisplayName("Member Id")]
         public int MemberId { get; set; }
 
         public string FirstName { get; set; }

@@ -9,6 +9,11 @@
     padding-right: 15px;
 }
 
+.tableHeader {
+    background-color: #285e8e;
+    color: #FFFFFF;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

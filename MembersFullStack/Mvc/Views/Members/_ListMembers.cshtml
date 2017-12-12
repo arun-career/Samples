@@ -2,16 +2,13 @@
 @{
     if (Model.MembersList.Count() > 0)
     {
-        <table class="table table-bordered table-striped">
-            <tr>
-                <td colspan="5"><b>Members</b></td>
-            </tr>
-            <tr>
-                <td>Member Id</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Email</td>
-                <td>Date Of Birth</td>
+        <table class="table table-bordered">            
+            <tr class="tableHeader">
+                <th>Member Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date Of Birth</th>
             </tr>
         @foreach (var listMember in Model.MembersList)
         {

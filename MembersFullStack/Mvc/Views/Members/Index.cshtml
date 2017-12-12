@@ -11,30 +11,30 @@
     @using (Html.BeginForm("Add", "Members", FormMethod.Post))
     {
     <table class="table table-bordered table-responsive">
-        <tr>
+        <tr class="tableHeader">
             <td colspan="5"><b>Input Member</b></td>
         </tr>
         <tr>
-            <td>First Name</td>
+            <th>First Name</th>
             <td>
-                @Html.EditorFor(m => m.FirstName)
+                @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "John", @maxlength = 30 } })
                 @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
             </td>
-            <td>Email</td>
+            <th>Email</th>
             <td>
-                @Html.EditorFor(m => m.Email)
+                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "John.Doe@email.com", @maxlength = 50 } })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </td>
         </tr>
         <tr>
-            <td>Last Name</td>
+            <th>Last Name</th>
             <td>
-                @Html.EditorFor(m => m.LastName)
+                @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Doe", @maxlength = 30 } })
                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
             </td>
-            <td>Date of birth</td>
+            <th>Date of birth</th>
             <td>
-                @Html.EditorFor(m => m.DateOfBirth)
+                @Html.EditorFor(m => m.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @placeholder = "10/10/1980", @maxlength = 10 } })
                 @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
             </td>
         </tr>

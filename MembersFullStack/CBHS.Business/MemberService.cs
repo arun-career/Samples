@@ -30,7 +30,7 @@ namespace CBHS.Business
 
         public Member GetOldestMember()
         {
-            return _repository.GetMembers().OrderByDescending(m => Convert.ToDateTime(m.DateOfBirth)).SingleOrDefault()
+            return _repository.GetMembers().OrderBy(m => Convert.ToDateTime(m.DateOfBirth)).FirstOrDefault();
         }
     }
 }

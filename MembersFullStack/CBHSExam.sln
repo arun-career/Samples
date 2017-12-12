@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBHS.Entity", "CBHS.Entity\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBHS.Webapi.Tests", "Webapi.Tests\CBHS.Webapi.Tests.csproj", "{F51CFEDC-2EF2-4B6B-8022-21638AD62477}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBHS.Business.Tests", "CBHS.Business.Tests\CBHS.Business.Tests.csproj", "{470AE020-93F9-4E4C-8F2A-9F02D9C1D3ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F51CFEDC-2EF2-4B6B-8022-21638AD62477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F51CFEDC-2EF2-4B6B-8022-21638AD62477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F51CFEDC-2EF2-4B6B-8022-21638AD62477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470AE020-93F9-4E4C-8F2A-9F02D9C1D3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470AE020-93F9-4E4C-8F2A-9F02D9C1D3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470AE020-93F9-4E4C-8F2A-9F02D9C1D3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470AE020-93F9-4E4C-8F2A-9F02D9C1D3ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,34 +1,31 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using CBHS.Datasource;
+using System.Collections.Generic;
 
-namespace CBHS.Webapi.Tests
+namespace CBHS.Business.Tests
 {
-    using Moq;
-    using CBHS.Webapi.Controllers;
-    using CBHS.Business.Interfaces;
-    using System.Collections.Generic;
-    using System;
-    using System.Linq.Expressions;
-
     [TestClass]
-    public class MemberApiTest
+    public class MemberBusinessTest
     {
         [TestMethod]
         public void Test_Check_Member_Is_Added()
         {
             //Arrange
-            var mockService = new Mock<IMemberService>();
+            var mockRepository = new Mock<IDataRepository>();
 
-            mockService.Setup(service => service.Add(It.Is<Entity.Member>((i) => 
-                i.FirstName.Equals("TestFirstName") && 
-                i.LastName.Equals("TestLastName") &&
-                i.DateOfBirth.Equals("10/10/1990") && 
-                i.Email.Equals("test@test.com")
+            mockRepository.Setup(repository => repository.AddMember(It.Is<Entity.Member>((r) =>
+                r.FirstName.Equals("TestFirstName") &&
+                r.LastName.Equals("TestLastName") &&
+                r.DateOfBirth.Equals("10/10/1990") &&
+                r.Email.Equals("test@test.com")
             ))).Returns(true);
-                        
-            var membersController = new MembersController(mockService.Object);
+
+            var memberService = new MemberService(mockRepository.Object);
 
             //Act
-            var IsAdded = membersController.Add(new Models.MemberModel()
+            var IsAdded = memberService.Add(new Entity.Member()
             {
                 MemberId = 0,
                 FirstName = "TestFirstName",
@@ -38,6 +35,7 @@ namespace CBHS.Webapi.Tests
             });
 
             //Assert
+            //mockRepository.VerifyAll();
             Assert.IsTrue(IsAdded);
         }
 
@@ -45,7 +43,7 @@ namespace CBHS.Webapi.Tests
         public void Test_Check_Members_Are_Listed()
         {
             //Arrange
-            var mockService = new Mock<IMemberService>();
+            var mockRepository = new Mock<IDataRepository>();
 
             var listOfEntityMembersExpected = new List<Entity.Member>
                                                 {
@@ -71,51 +69,26 @@ namespace CBHS.Webapi.Tests
                                                         Email = "test3@test.com"
                                                     }
                                                 };
-            mockService.Setup(service => service.List()).Returns(listOfEntityMembersExpected);
 
-            var listOfMemberModelsExpected = new List<Models.MemberModel>
-                                                {
-                                                    new Models.MemberModel()
-                                                    {
-                                                        FirstName = "TestFirstName1",
-                                                        LastName = "TestLastName1",
-                                                        DateOfBirth = "10/10/1991",
-                                                        Email = "test1@test.com"
-                                                    },
-                                                    new Models.MemberModel()
-                                                    {
-                                                        FirstName = "TestFirstName2",
-                                                        LastName = "TestLastName2",
-                                                        DateOfBirth = "10/10/1992",
-                                                        Email = "test2@test.com"
-                                                    },
-                                                    new Models.MemberModel()
-                                                    {
-                                                        FirstName = "TestFirstName3",
-                                                        LastName = "TestLastName3",
-                                                        DateOfBirth = "10/10/1993",
-                                                        Email = "test3@test.com"
-                                                    }
-                                                };
+            mockRepository.Setup(repository => repository.GetMembers()).Returns(listOfEntityMembersExpected);
 
-
-            var membersController = new MembersController(mockService.Object);
+            var memberService = new MemberService(mockRepository.Object);
 
             //Act
-            var listOfMembersActual = membersController.List();
+            var listOfMembersActual = memberService.List();
 
             //Assert
-            Assert.AreEqual(listOfMemberModelsExpected.Count, listOfMembersActual.Count);
-            Assert.AreEqual(listOfMemberModelsExpected[0].FirstName, listOfMembersActual[0].FirstName);
-            Assert.AreEqual(listOfMemberModelsExpected[1].LastName, listOfMembersActual[1].LastName);
-            Assert.AreEqual(listOfMemberModelsExpected[2].DateOfBirth, listOfMembersActual[2].DateOfBirth);
+            Assert.AreEqual(listOfEntityMembersExpected.Count, listOfMembersActual.Count);
+            Assert.AreEqual(listOfEntityMembersExpected[0].FirstName, listOfMembersActual[0].FirstName);
+            Assert.AreEqual(listOfEntityMembersExpected[1].LastName, listOfMembersActual[1].LastName);
+            Assert.AreEqual(listOfEntityMembersExpected[2].DateOfBirth, listOfMembersActual[2].DateOfBirth);
         }
 
         [TestMethod]
         public void Test_Check_If_Oldest_Member_Is_Returned()
         {
             //Arrange
-            var mockService = new Mock<IMemberService>();
+            var mockRepository = new Mock<IDataRepository>();
 
             var listOfEntityMembersExpected = new List<Entity.Member>
                                                 {
@@ -141,10 +114,11 @@ namespace CBHS.Webapi.Tests
                                                         Email = "test3@test.com"
                                                     }
                                                 };
-            mockService.Setup(service => service.GetOldestMember()).Returns(listOfEntityMembersExpected[0]);            var membersController = new MembersController(mockService.Object);
+            mockRepository.Setup(repository => repository.GetMembers()).Returns(listOfEntityMembersExpected);
+            var memberService = new MemberService(mockRepository.Object);
 
             //Act
-            var oldestMemberActual = membersController.Oldest();
+            var oldestMemberActual = memberService.GetOldestMember();
 
             //Assert
             Assert.AreEqual(listOfEntityMembersExpected[0].FirstName, oldestMemberActual.FirstName);

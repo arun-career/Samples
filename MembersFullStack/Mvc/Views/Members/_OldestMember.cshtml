@@ -4,15 +4,8 @@
     {
         var oldestMember = Model.OldestMember;
         <tr>
-            <td align="left"><b>Oldest Member</b></td>
-            <td colspan="4"><br /></td>
+            <td align="left" colspan="5"><b>Oldest Member : </b> @oldestMember.Age , @oldestMember.FirstName  @oldestMember.LastName.ToUpper()</td>
         </tr>
-        <tr>
-            <td colspan="3">
-            @oldestMember.Age , @oldestMember.FirstName  @oldestMember.LastName.ToUpper()
-        </td>
-        <td colspan="2"><br /></td>
-    </tr>
     }
 </table>
 

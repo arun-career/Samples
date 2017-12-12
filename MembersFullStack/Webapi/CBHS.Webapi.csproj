@@ -217,25 +217,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\RouteDebugger\Components\ActionSelectSimulator.cs" />
-    <Compile Include="Areas\RouteDebugger\Components\DictionaryExtensions.cs" />
-    <Compile Include="Areas\RouteDebugger\Components\HttpParameterBindingExtensions.cs" />
-    <Compile Include="Areas\RouteDebugger\Components\TypeHelper.cs" />
-    <Compile Include="Areas\RouteDebugger\Controllers\RouteDebuggerController.cs" />
-    <Compile Include="Areas\RouteDebugger\InspectActionInvoker.cs" />
-    <Compile Include="Areas\RouteDebugger\InspectActionSelector.cs" />
-    <Compile Include="Areas\RouteDebugger\InspectControllerSelector.cs" />
-    <Compile Include="Areas\RouteDebugger\InspectHandler.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\ActionSelectionInfo.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\ActionSelectionLog.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\ControllerSelectionInfo.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\HttpParameterDescriptionInfo.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\InspectData.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\RouteDataInfo.cs" />
-    <Compile Include="Areas\RouteDebugger\Models\RouteInfo.cs" />
-    <Compile Include="Areas\RouteDebugger\RequestHelper.cs" />
-    <Compile Include="Areas\RouteDebugger\RouteDebuggerAreaRegistration.cs" />
-    <Compile Include="Areas\RouteDebugger\RouteDebuggerConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Interfaces\IMemberController.cs" />
@@ -254,8 +235,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\RouteDebugger\Content\rdstyle.css" />
-    <Content Include="Areas\RouteDebugger\Scripts\detect.js" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -272,8 +251,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Areas\RouteDebugger\Views\Web.config" />
-    <Content Include="Areas\RouteDebugger\Views\RouteDebugger\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

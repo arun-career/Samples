@@ -31,6 +31,15 @@ namespace CBHS.Web {
         protected global::System.Web.UI.HtmlControls.HtmlInputText FirstName;
         
         /// <summary>
+        /// RequiredFieldValidatorFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorFirstName;
+        
+        /// <summary>
         /// Email control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace CBHS.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Email;
+        
+        /// <summary>
+        /// RequiredFieldEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldEmail;
         
         /// <summary>
         /// LastName control.
@@ -49,6 +67,15 @@ namespace CBHS.Web {
         protected global::System.Web.UI.HtmlControls.HtmlInputText LastName;
         
         /// <summary>
+        /// RequiredFieldValidatorLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorLastName;
+        
+        /// <summary>
         /// DateOfBirth control.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,15 @@ namespace CBHS.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText DateOfBirth;
+        
+        /// <summary>
+        /// RequiredFieldValidatorDateOfBirth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDateOfBirth;
         
         /// <summary>
         /// addMember control.
